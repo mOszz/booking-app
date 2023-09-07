@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface VehicleInterface extends JpaRepository<Vehicle,Integer> {
+public interface VehicleRepository extends JpaRepository<Vehicle,Integer> {
 
 }
