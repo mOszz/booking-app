@@ -24,14 +24,12 @@ public class Reservation {
      */
     @ManyToOne
     @JoinColumn(name = "vehicule_id", referencedColumnName = "id")
-    @Column(nullable = false)
     private Vehicle vehicule;
     /**
      * The customer who made the reservation.
      */
     @ManyToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
-    @Column(nullable = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
     /**
      * The reservation starting date
