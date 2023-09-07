@@ -5,26 +5,49 @@ import com.dlog.bookingapp.models.Customer;
 
 import java.util.Calendar;
 
+/**
+ * Represents a reservation entity.
+ * This class maps to the "reservation" table in the database and
+ * contains information about a reservation made by a client for a vehicle.
+ */
 @Entity
 @Table(name="reservation")
 public class Reservation {
+    /**
+     * The unique identifier for a reservation.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    /**
+     * The vehicle associated with this reservation.
+     */
     @ManyToOne
     @JoinColumn(name = "vehicule_id", referencedColumnName = "id")
     @Column(nullable = false)
     private Vehicle vehicule;
+    /**
+     * The customer who made the reservation.
+     */
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @Column(nullable = false)
     private Customer customer;
+    /**
+     * The reservation starting date
+     */
     @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private Calendar startDate;
+    /**
+     * The reservation ending date
+     */
     @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private Calendar endDate;
+    /**
+     * Kilometer count during the reservation
+     */
     @Column(nullable = false)
     private int kmCount;
     public void setId(Long id) {
