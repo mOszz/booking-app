@@ -59,4 +59,15 @@ public class Customer {
     public void setDrivingLicence(int drivingLicence) {
         this.drivingLicence = drivingLicence;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", birthDate=" + birthDate +
+                ", drivingLicence=" + drivingLicence +
+                '}';
+    }
 }
