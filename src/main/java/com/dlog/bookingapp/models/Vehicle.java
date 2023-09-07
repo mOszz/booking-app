@@ -11,7 +11,7 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id ;
 
-    @Column(nullable = false )
+    @Column(nullable = false)
     private int taxHorsePower;
     @Column(nullable = false, length = 50)
     private String model ;
@@ -57,11 +57,11 @@ public class Vehicle {
 
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -120,9 +120,4 @@ public class Vehicle {
     public void setPriceKm(float priceKm) {
         this.priceKm = priceKm;
     }
-
-
-
-
-
 }
