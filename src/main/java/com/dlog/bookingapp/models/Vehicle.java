@@ -1,3 +1,10 @@
+/**
+ * Represents the Vehicle entity within the booking app system.
+ *
+ * @author [Your Name]
+ * @version 1.0
+ * @since [Date of Creation]
+ */
 package com.dlog.bookingapp.models;
 
 import jakarta.persistence.*;
@@ -5,29 +12,75 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="vehicle")
 public class Vehicle {
+
+    /**
+     * Unique identifier for the vehicle.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id ;
 
+    /**
+     * Tax horsepower of the vehicle.
+     */
     @Column(nullable = false)
     private int taxHorsePower;
+
+    /**
+     * Model name of the vehicle.
+     */
     @Column(nullable = false, length = 50)
-    private String model ;
+    private String model;
+
+    /**
+     * Brand name of the vehicle.
+     */
     @Column(nullable = false, length = 50)
     private String brand;
+
+    /**
+     * Color of the vehicle.
+     */
     @Column(nullable = false, length = 50)
     private String color;
+
+    /**
+     * Unique registration number of the vehicle.
+     */
     @Column(nullable = false, length = 12, unique = true)
     private String registration;
+
+    /**
+     * Rental price of the vehicle per day.
+     */
     @Column(nullable = false)
     private float priceDay;
+
+    /**
+     * Rental price of the vehicle per kilometer.
+     */
     @Column(nullable = false)
     private float priceKm;
 
-
+    /**
+     * Default constructor.
+     */
     public Vehicle(){
 
     }
+
+    /**
+     * Parameterized constructor to initialize all properties of the vehicle.
+     *
+     * @param id Unique identifier for the vehicle.
+     * @param taxHorsePower Tax horsepower of the vehicle.
+     * @param model Model name of the vehicle.
+     * @param brand Brand name of the vehicle.
+     * @param color Color of the vehicle.
+     * @param registration Unique registration number of the vehicle.
+     * @param priceDay Rental price of the vehicle per day.
+     * @param priceKm Rental price of the vehicle per kilometer.
+     */
     public Vehicle(int id, int taxHorsePower, String model, String brand, String color, String registration, float priceDay, float priceKm) {
         this.id = id;
         this.taxHorsePower = taxHorsePower;
@@ -38,6 +91,12 @@ public class Vehicle {
         this.priceDay = priceDay;
         this.priceKm = priceKm;
     }
+
+    /**
+     * Returns a string representation of the vehicle.
+     *
+     * @return a string representation of the vehicle.
+     */
 
     @Override
     public String toString() {
