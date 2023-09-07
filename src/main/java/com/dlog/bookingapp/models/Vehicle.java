@@ -6,8 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 public class Vehicle {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id ;
