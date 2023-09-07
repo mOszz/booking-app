@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="vehicle")
 public class Vehicle {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id ;
