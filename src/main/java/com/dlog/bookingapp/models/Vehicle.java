@@ -1,10 +1,9 @@
 package com.dlog.bookingapp.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name="vehicle")
 public class Vehicle {
 
 
@@ -12,7 +11,7 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id ;
 
-    @Column(nullable = falsegit )
+    @Column(nullable = false )
     private int taxHorsePower;
     @Column(nullable = false, length = 50)
     private String model ;
@@ -58,11 +57,11 @@ public class Vehicle {
 
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
