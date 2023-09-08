@@ -57,7 +57,8 @@ public class AdminController {
         return ResponseEntity.ok(reservationService.deleteReservation(id));
     }
     @PutMapping("/reservation/{id}")
-    public ResponseEntity<Reservation> updateReservation(@PathVariable int id,Reservation reservation){
-        return ResponseEntity.ok(reservationService.reservationUpdate(id, reservation));
+    public ResponseEntity<String> updateReservation(@PathVariable int id,Reservation reservation){
+        Reservation updatedReservation = reservationService.reservationUpdate(id, reservation);
+        return ResponseEntity.ok("reservation "+ updatedReservation.getId() +" was successfully updated");
     }
 }
