@@ -39,13 +39,12 @@ public class AdminController {
         return ResponseEntity.ok("Car "+ newVehicle.getId() +" added successfully");
     }
 
-//    @DeleteMapping("/reservation/{id}")
-//    public ResponseEntity<Optional<Reservation>> deleteReservation(@PathVariable int id){
-//        return ResponseEntity.ok(reservationService.deleteReservation(id));
-//    }
-//        @PutMapping("/reservation/{id}")
-//    public ResponseEntity<Reservation> updateReservation(@PathVariable int id,Vehicle vehicule){
-//        return ResponseEntity.ok(reservationService.UpdateReservation(id));
-//    }
-
+    @DeleteMapping("/reservation/{id}")
+    public ResponseEntity<Optional<Reservation>> deleteReservation(@PathVariable int id){
+        return ResponseEntity.ok(reservationService.deleteReservation(id));
+    }
+    @PutMapping("/reservation/{id}")
+    public ResponseEntity<Reservation> updateReservation(@PathVariable int id,Reservation reservation){
+        return ResponseEntity.ok(reservationService.reservationUpdate(id, reservation));
+    }
 }
