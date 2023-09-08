@@ -24,6 +24,10 @@ public class ReservationController {
     @PostMapping
     public ResponseEntity<String> saveReservation(@RequestBody Reservation reservation) {
         Reservation newReservation = reservationService.saveReservation(reservation);
-        return ResponseEntity.ok("New reservation saved successfully");
+        if (newReservation == null) {
+            return ResponseEntity.ok("Vehicle already in-use");
+        } else {
+            return ResponseEntity.ok("New reservation saved successfully");
+        }
     }
 }
