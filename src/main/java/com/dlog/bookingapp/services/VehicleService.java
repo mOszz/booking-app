@@ -50,6 +50,10 @@ public class VehicleService {
             oldvehicle.setBrand(vehicle.getBrand());
             oldvehicle.setColor(vehicle.getColor());
             oldvehicle.setModel(vehicle.getModel());
+            oldvehicle.setRegistration(vehicle.getRegistration());
+            oldvehicle.setPriceDay(vehicle.getPriceDay());
+            oldvehicle.setPriceKm(vehicle.getPriceKm());
+            oldvehicle.setTaxHorsePower(vehicle.getTaxHorsePower());
             vehicleRepository.save(vehicle);
             return vehicle;
         } else {

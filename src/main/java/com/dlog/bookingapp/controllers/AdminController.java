@@ -7,6 +7,7 @@ import com.dlog.bookingapp.services.VehicleService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,6 +23,18 @@ public class AdminController {
         this.vehicleService = vehicleService;
         this.reservationService = reservationService;
     }
+
+
+    @GetMapping("vehicles")
+    public ResponseEntity<List<Vehicle>>getAllVehicules(){
+        return ResponseEntity.ok(vehicleService.getAllVehicules());
+    }
+
+    @GetMapping("/vehicles/{id}")
+    public ResponseEntity<Optional<Vehicle>> fillById(@PathVariable int id){
+        return ResponseEntity.ok(vehicleService.vehicleById(id));
+    }
+
 
     @DeleteMapping("/vehicles/{id}")
     public ResponseEntity<Optional<Vehicle>> deleteVehicle(@PathVariable int id){
