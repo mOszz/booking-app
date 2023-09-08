@@ -42,20 +42,20 @@ public class VehicleService {
      * @param vehicle The vehicle containing the new information.
      * @return The updated car if it exists, or null if not found.
      */
-//    public Vehicle vehicleUpdate(int id, Vehicle vehicle) {
-//        Optional<Vehicle> existingCar = vehicleRepository.findById(id);
-//
-//        if (existingCar.isPresent()) {
-//            Vehicle oldvehicle = existingCar.get();
-//            oldvehicle.setBrand(vehicle.getBrand());
-//            oldvehicle.setColor(vehicle.getColor());
-//            oldvehicle.setModel(vehicle.getModel());
-//            vehicleRepository.save(vehicle);
-//            return vehicle;
-//        } else {
-//            return null;
-//        }
-//    }
+    public Vehicle vehicleUpdate(int id, Vehicle vehicle) {
+        Optional<Vehicle> existingCar = vehicleRepository.findById(id);
+
+        if (existingCar.isPresent()) {
+            Vehicle oldvehicle = existingCar.get();
+            oldvehicle.setBrand(vehicle.getBrand());
+            oldvehicle.setColor(vehicle.getColor());
+            oldvehicle.setModel(vehicle.getModel());
+            vehicleRepository.save(vehicle);
+            return vehicle;
+        } else {
+            return null;
+        }
+    }
 
     /**
      * Deletes a car by its identifier.
@@ -66,6 +66,17 @@ public class VehicleService {
     public Optional<Vehicle> vehicleDelete(int id) {
         Optional<Vehicle> vehicle = vehicleRepository.findById(id);
         vehicleRepository.deleteById(id);
+        return vehicle;
+    }
+
+    /**
+     * Adds a new vehicle.
+     *
+     * @param vehicle The new vehicle to add.
+     * @return The added vehicle.
+     */
+    public Vehicle addACar(Vehicle vehicle) {
+        vehicleRepository.save(vehicle);
         return vehicle;
     }
 

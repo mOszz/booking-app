@@ -27,10 +27,7 @@ public class VehiclesController {
         return ResponseEntity.ok(vehicleService.vehicleById(id));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Optional<Vehicle>> deleteVehicle(@PathVariable int id){
-        return ResponseEntity.ok(vehicleService.vehicleDelete(id));
-    }
+
 
 
 
