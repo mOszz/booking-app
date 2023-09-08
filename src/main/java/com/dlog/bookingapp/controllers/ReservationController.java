@@ -27,7 +27,7 @@ public class ReservationController {
         if (newReservation == null) {
             return ResponseEntity.ok("Vehicle already in-use");
         } else {
-            return ResponseEntity.ok("New reservation saved successfully");
+            return ResponseEntity.ok("New reservation saved successfully. Reservation price: "+ reservationService.definePrice(reservation));
         }
     }
 }

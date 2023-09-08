@@ -1,20 +1,23 @@
 package com.dlog.bookingapp.services;
 
 import com.dlog.bookingapp.models.Reservation;
+import com.dlog.bookingapp.models.Vehicle;
 import com.dlog.bookingapp.repository.ReservationRepository;
+import com.dlog.bookingapp.repository.VehicleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ReservationService {
     private final ReservationRepository reservationRepository;
+    private final VehicleRepository vehicleRepository;
 
-    public ReservationService(ReservationRepository reservationRepository) {
+    public ReservationService(ReservationRepository reservationRepository, VehicleRepository vehicleRepository) {
         this.reservationRepository = reservationRepository;
+        this.vehicleRepository = vehicleRepository;
     }
 
     public List<Reservation> getAllReservations() {
@@ -55,4 +58,24 @@ public class ReservationService {
             return null;
         }
     }
+
+    public float definePrice(Reservation reservation) {
+        int vehicleId = Math.toIntExact(reservation.getVehicule().getId());
+        Optional<Vehicle> vehicle = vehicleRepository.findById(vehicleId);
+        if (vehicle.isPresent()) {
+            float kmPrice = vehicle.get().getPriceKm();
+            float dayPrice = vehicle.get().getPriceDay();
+            int kmNb = reservation.getKmCount();
+            long millisecondsDiff = reservation.getEndDate().getTimeInMillis() - reservation.getStartDate().getTimeInMillis();
+            long daysDiff = millisecondsDiff / (24 * 60 * 60 * 1000);
+            return (dayPrice * daysDiff) + (kmPrice * kmNb);
+        }
+
+//        long millisecondsDiff = reservation.getEndDate().getTimeInMillis() - reservation.getStartDate().getTimeInMillis();
+//        long daysDiff = millisecondsDiff / (24 * 60 * 60 * 1000);
+
+        //return (dayPrice * daysDiff) + (kmPrice * kmNb);+
+        return 00.00F;
+    }
+
 }
