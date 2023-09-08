@@ -50,10 +50,9 @@ public class ReservationService {
             oldReservation.setEndDate(reservation.getEndDate());
             oldReservation.setKmCount(reservation.getKmCount());
             reservationRepository.save(reservation);
-            return  reservation;
+            return reservation;
         } else {
             return null;
         }
     }
-
 }
